@@ -1,29 +1,76 @@
-<h2>Sign up</h2>
+<h2>Faça seu cadastro</h2>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+<%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
+<section>
+  <header></header>
+  <main>
 
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
+    <div class="container">
+      <div class="">
+        <%= f.text_field :fullname, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", require => true%>
+        <small id="fullnameHelp" class="">Seu nome deve conter no máximo 50 caracteres<br>
+          e apenas Letras e Espaços são permitidos ;)</small>
+      </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
+      <div class="">
+        <%= f.date_field :dataNasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "00/00/0000" , :maxlength=> "50", :autocomplete => "off", require => true %>
+      </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
+      <div class="" data-placement="top" data-trigger="manual" data-toggle="popover" data-content="O  CEP não é válido" id="text-cep">
+        </br>
+        <%= f.text_field :cep, autofocus: true, :class => "", :placeholder => "00000-000", :autocomplete => "off", require => true %>
+      </div>
+
+      <div class="">
+        </br>
+        <%= f.select :estado, states, autofocus: true, :autocomplete => "off", require => true%>
+        <small id="estadHelp" class="">*Campo não obrigatório</small>
+      </div>
+
+      <div class="">
+        </br>
+        <%= f.text_field :cidade, autofocus: true , :class => "", :placeholder => "Cidade", :autocomplete => "off", require => true %>
+      </div>
+
+      <div class="">
+        <%= f.text_field :bairro, autofocus: true, :class => "", :placeholder => "Estado", :autocomplete => "off", require => true %>
+      </div>
+
+      <div class="">
+        <%= f.text_field :rua, autofocus: true, :class => "", :placeholder => "Logradouro", :autocomplete => "off" %>
+        <small id="ruaHelp" class="">*Campo não obrigatório</small>
+      </div>
+
+
+      <div class="field">
+        <%= f.label :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", require => true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password %>
+        <% if @minimum_password_length %>
+        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <% end %><br />
+        <%= f.password_field :password, autocomplete: "new-password", require => true %>
+      </div>
+
+      <div class="field">
+        <%= f.label :password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", require => true %>
+      </div>
+
+      <div class="actions">
+        <%= f.submit "Sign up" %>
+      </div>
+    </div>
+
+  </main>
+  <footer></footer>
+</section>
+
 <% end %>
 
 <%= render "devise/shared/links" %>
