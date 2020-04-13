@@ -8,62 +8,100 @@
   <main>
 
     <div class="container">
+
+      <legend class="">Dados Pessoais</legend>
       <div class="">
-        <%= f.text_field :fullname, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", require => true%>
-        <small id="fullnameHelp" class="">Seu nome deve conter no máximo 50 caracteres<br>
-          e apenas Letras e Espaços são permitidos ;)</small>
+        <%= f.label 'Nome, class: '' %>
+        <%= f.text_field :name, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
       </div>
 
       <div class="">
-        <%= f.date_field :dataNasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "00/00/0000" , :maxlength=> "50", :autocomplete => "off", require => true %>
+        <%= f.label 'Sobrenome', class: '' %>
+        <%= f.text_field :fullname, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
+      </div>
+
+      <div class="">
+        <%= f.label 'Data de Nascimento', class: '' %>
+        <%= f.date_field :dataNasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "00/00/0000" , :maxlength=> "50", :autocomplete => "off", required: true %>
       </div>
 
       <div class="" data-placement="top" data-trigger="manual" data-toggle="popover" data-content="O  CEP não é válido" id="text-cep">
-        </br>
-        <%= f.text_field :cep, autofocus: true, :class => "", :placeholder => "00000-000", :autocomplete => "off", require => true %>
+        <%= f.label 'CEP', class: '' %>
+        <%= f.text_field :cep, autofocus: true, :class => "", :placeholder => "00000-000", :autocomplete => "off", required: true %>
       </div>
 
       <div class="">
-        </br>
-        <%= f.select :estado, states, autofocus: true, :autocomplete => "off", require => true%>
+        <%= f.label 'Estado', class: '' %>
+        <%= f.select :estado, states, autofocus: true, :autocomplete => "off", required: true, readonly: true %>
         <small id="estadHelp" class="">*Campo não obrigatório</small>
       </div>
 
       <div class="">
-        </br>
-        <%= f.text_field :cidade, autofocus: true , :class => "", :placeholder => "Cidade", :autocomplete => "off", require => true %>
+        <%= f.label 'Cidade', class: '' %>
+        <%= f.text_field :cidade, autofocus: true , :class => "", :placeholder => "Cidade", :autocomplete => "off", required: true %>
       </div>
 
       <div class="">
-        <%= f.text_field :bairro, autofocus: true, :class => "", :placeholder => "Estado", :autocomplete => "off", require => true %>
+        <%= f.label 'Bairro', class: '' %>
+        <%= f.text_field :bairro, autofocus: true, :class => "", :placeholder => "Estado", :autocomplete => "off", required: true %>
       </div>
 
       <div class="">
-        <%= f.text_field :rua, autofocus: true, :class => "", :placeholder => "Logradouro", :autocomplete => "off" %>
-        <small id="ruaHelp" class="">*Campo não obrigatório</small>
+        <%= f.label 'Rua', class: '' %>
+        <%= f.text_field :rua, autofocus: true, :class => "", :placeholder => "Logradouro", :autocomplete => "off", required: true%>
       </div>
 
-
-      <div class="field">
-        <%= f.label :email %><br />
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", require => true %>
+      <div class="">
+        <%= f.label 'Você possui/é algum desses itens?', class: '' %>
+        <%= f.label :diabete, class: 'checkbox checkbox--space' do |label| %>
+        <%= f.check_box :diabete %>
+          <span class=""></span>
+            Diabete
+        <% end %>
       </div>
 
-      <div class="field">
-        <%= f.label :password %>
+      <div class="">
+        <%= f.label 'Possui crianças de até 10 anos na sua residência?', class: '' %>
+        <input type="radio" id="crianca_sim" value="sim"
+         checked>
+        <label for="sim">Sim</label>
+
+        <input type="radio" id="crianca_nao" value="nao"
+        checked>
+       <label for="nao">Não</label>
+      </div>
+
+      <div class="">
+        <%= f.label 'Possui pessoas da área de risco na sua residência?', class: '' %>
+        <input type="radio" id="risco_sim" value="sim"
+         checked>
+        <label for="sim">Sim</label>
+        <input type="radio" id="risco_nao" value="nao"
+        checked>
+       <label for="nao">Não</label>
+      </div>
+      
+
+      <div class="">
+        <%= f.label 'Email', :email %><br />
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+      </div>
+
+      <div class="">
+        <%= f.label 'Senha' ,:password %>
         <% if @minimum_password_length %>
         <em>(<%= @minimum_password_length %> characters minimum)</em>
         <% end %><br />
-        <%= f.password_field :password, autocomplete: "new-password", require => true %>
+        <%= f.password_field :password, autocomplete: "new-password", required: true %>
       </div>
 
-      <div class="field">
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", require => true %>
+      <div class="">
+        <%= f.label 'Confirme sua senha',:password_confirmation %><br />
+        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
       </div>
 
-      <div class="actions">
-        <%= f.submit "Sign up" %>
+      <div class="">
+        <%= f.submit "Finalizar" %>
       </div>
     </div>
 
