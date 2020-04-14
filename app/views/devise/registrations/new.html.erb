@@ -17,12 +17,12 @@
 
       <div class="">
         <%= f.label 'Sobrenome', class: '' %>
-        <%= f.text_field :fullname, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
+        <%= f.text_field :last_name, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
       </div>
 
       <div class="">
         <%= f.label 'Data de Nascimento', class: '' %>
-        <%= f.date_field :dataNasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "00/00/0000" , :maxlength=> "50", :autocomplete => "off", required: true %>
+        <%= f.date_field :data_nasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "00/00/0000" , :maxlength=> "50", :autocomplete => "off", required: true %>
       </div>
 
       <div class="" data-placement="top" data-trigger="manual" data-toggle="popover" data-content="O  CEP não é válido" id="text-cep">
@@ -62,6 +62,22 @@
 
       <div class="">
         <%= f.label 'Possui crianças de até 10 anos na sua residência?', class: '' %>
+        <%= radio_tag(
+          name: 'life_order_flow_advisor_review[insured_person_attributes][complement_attributes][income_source]',
+          value: 'employed',
+          checked: @step_object.utm_from_caixaseguradora? ? nil : f.object.employed?,
+          options: {
+            id: 'life_order_flow_advisor_review_insured_person_attributes_complement_attributes_income_employed',
+            tabindex: 8,
+            class: "radio-button-wrapper",
+            required: true,
+            'data-insured-person-income-source': 'employed'
+          }
+        ) %>
+        <%= f.label :income_source, 'Carteira assinada',
+          for: 'life_order_flow_advisor_review_insured_person_attributes_complement_attributes_income_employed',
+          class: 'form__label button-wrapper'
+        %>
         <input type="radio" id="crianca_sim" value="sim"
          checked>
         <label for="sim">Sim</label>
