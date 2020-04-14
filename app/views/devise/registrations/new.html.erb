@@ -63,39 +63,55 @@
       <div class="">
         <%= f.label 'Possui crianças de até 10 anos na sua residência?', class: '' %>
         <%= radio_tag(
-          name: 'life_order_flow_advisor_review[insured_person_attributes][complement_attributes][income_source]',
-          value: 'employed',
-          checked: @step_object.utm_from_caixaseguradora? ? nil : f.object.employed?,
+          name: :possui_crianca,
+          value: 'sim_crianca',
           options: {
-            id: 'life_order_flow_advisor_review_insured_person_attributes_complement_attributes_income_employed',
-            tabindex: 8,
-            class: "radio-button-wrapper",
+            class: "",
             required: true,
-            'data-insured-person-income-source': 'employed'
           }
         ) %>
-        <%= f.label :income_source, 'Carteira assinada',
-          for: 'life_order_flow_advisor_review_insured_person_attributes_complement_attributes_income_employed',
-          class: 'form__label button-wrapper'
+        <%= f.label :sim, 'Sim',
+          for: ':possui_crianca',
+          class: ''
         %>
-        <input type="radio" id="crianca_sim" value="sim"
-         checked>
-        <label for="sim">Sim</label>
-
-        <input type="radio" id="crianca_nao" value="nao"
-        checked>
-       <label for="nao">Não</label>
-      </div>
+        <%= radio_tag(
+          name: :possui_crianca,
+          value: 'nao_crianca',
+          options: {
+            class: "",
+            required: true,
+          }
+        ) %>
+        <%= f.label :nao, 'Não',
+          for: ':possui_crianca',
+          class: ''
+        %>
 
       <div class="">
-        <%= f.label 'Possui pessoas da área de risco na sua residência?', class: '' %>
-        <input type="radio" id="risco_sim" value="sim"
-         checked>
-        <label for="sim">Sim</label>
-        <input type="radio" id="risco_nao" value="nao"
-        checked>
-       <label for="nao">Não</label>
-      </div>
+        <%= radio_tag(
+          name: :possui_risco,
+          value: 'sim_risco',
+          options: {
+            class: "",
+            required: true,
+          }
+        ) %>
+        <%= f.label :sim, 'Sim',
+          for: ':possui_crianca',
+          class: ''
+        %>
+        <%= radio_tag(
+          name: :possui_crianca,
+          value: 'nao_risco',
+          options: {
+            class: "",
+            required: true,
+          }
+        ) %>
+        <%= f.label :nao, 'Não',
+          for: ':possui_crianca',
+          class: ''
+        %>
       
 
       <div class="">
