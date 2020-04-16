@@ -5,68 +5,130 @@
   <main>
     <div class="container">
       <legend class="">Dados Pessoais</legend>
+
       <div class="">
         <%= f.label :Nome, class: '' %>
         <%= f.text_field :name, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
       </div>
+
       <div class="">
         <%= f.label :Sobrenome, class: '' %>
         <%= f.text_field :last_name, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
       </div>
+
       <div class="">
         <%= f.label :Data_de_nascimento, class: '' %>
         <%= f.date_field :data_nasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "00/00/0000" , :maxlength=> "50", :autocomplete => "off", required: true %>
       </div>
+
       <div class="" data-placement="top" data-trigger="manual" data-toggle="popover" data-content="O  CEP não é válido" id="text-cep">
         <%= f.label :CEP, class: '' %>
         <%= f.text_field :cep, autofocus: true, :class => "", :placeholder => "00000-000", :autocomplete => "off", required: true %>
       </div>
+
       <div class="">
         <%= f.label :Estado, class: '' %>
         <%= select(:user, :estado, [['São Paulo', 'SP'], ['Rio de Janeiro', 'RJ'], ['Minas Gerais', 'RJ']]) %>
       </div>
+      
       <div class="">
         <%= f.label :Cidade, class: '' %>
         <%= f.text_field :cidade, autofocus: true , :class => "", :placeholder => "Cidade", :autocomplete => "off", required: true %>
       </div>
+
       <div class="">
         <%= f.label :Bairro, class: '' %>
         <%= f.text_field :bairro, autofocus: true, :class => "", :placeholder => "Estado", :autocomplete => "off", required: true %>
       </div>
+
       <div class="">
         <%= f.label :Rua, class: '' %>
         <%= f.text_field :rua, autofocus: true, :class => "", :placeholder => "Logradouro", :autocomplete => "off", required: true%>
       </div>
+
       <div class="">
         <%= f.label :Email, class: '' %>
         <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
       </div>
+
       <div class="">
         <%= f.label :senha ,:password %>
         <%= f.password_field :password, autocomplete: "new-password", required: true %>
       </div>
+
       <div class="">
         <%= f.label 'Confirme sua senha',:password_confirmation %><br />
         <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
       </div>
+
       <div class="">
-      <%= f.radio_button :possui_doenca, 'Nenhuma' %>
-      <%= f.label :possui_doenca, 'Não Possuo Doença', :value => 'Nenhuma' %>
-      <%= f.radio_button :possui_doenca, 'Nao' %>
-      <%= f.label :possui_doenca, 'Diabetes', :value => 'Diabetes' %>
+      <%= f.label 'Marque as opções que você se encaixa'%><br>
+
+      <%= f.label :possui_doenca, :value => 'nenhuma' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Nenhuma
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'idoso/a' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Idoso/a
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'asma' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Asma
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'cancer' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Câncer
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'diabetico/a' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Diabetico/a
+      <% end %>
+      
+      <%= f.label :possui_doenca, :value => 'doencas cardiovasculares' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Doenças Cardiovasculares
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'hipertensao' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Hipertensão
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'fumante' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Fumante
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'gestante' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Gestante
+      <% end %>
+
+      <%= f.label :possui_doenca, :value => 'obesidade grave' do |label| %>
+      <%= f.check_box :possui_doenca %>
+        Obesidade Grave
+      <% end %>
       </div>
+
       <div class="">
       <%= f.radio_button :possui_crianca, 'Sim' %>
       <%= f.label :possui_crianca, 'Possuo Crianca', :value => true %>
       <%= f.radio_button :possui_crianca, 'Nao' %>
       <%= f.label :possui_crianca, 'Não Possuo criança', :value => false %>
       </div>
+
       <div class="">
       <%= f.radio_button :possui_risco, 'Sim' %>
       <%= f.label :possui_risco, 'Possuo risco', :value => true %>
       <%= f.radio_button :possui_risco, 'Nao' %>
       <%= f.label :possui_risco, 'Não Possuo risco', :value => false %>
       </div>
+      
       <div class="">
         <%= f.submit "Finalizar" %>
       </div>
