@@ -3,11 +3,18 @@
 
 <head>
   <title>Covid-19</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="viewport" content="width=320px">
+  <meta name="viewport" content="height=device-height">
+  
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" /> 
+  
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
 </head>
 
 <body>
@@ -18,15 +25,24 @@
   <p class="alert alert-danger"><%= alert %></p>
   <% end %>
 
-  <p class="navbar-text float-right">
-    <% if user_signed_in? %>
-      Logado como: <strong><%= current_user.email %></strong>.
-      <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'navbar-link' %> |
-      <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'navbar-link'  %>
-    <% else %>
-      <%= link_to "Registrar-se", new_user_registration_path, :class => 'navbar-link'  %> |
-      <%= link_to "Login", new_user_session_path, :class => 'navbar-link'  %>
-    <% end %>
+  <nav class="navbar navbar-expand-lg navbar-light" style="margin-bottom: 0px; position: sticky;  top: 0; z-index: 1071; background-color: rgb(243, 243, 243);">
+    <div>
+      <a align="left" href="#">
+        <img src="<%= image_url('logo-dark.png') %> " class="logo-covid">
+      </a>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav" align="center">
+        <a class="nav-item nav-link active" href="#">Quiz <span class="sr-only">(current)</span></a>
+        <a class="nav-item nav-link" href="#">Minha Área</a>
+        <a class="nav-item nav-link" href="#">Login</a>
+        <a class="nav-item nav-link" href="#">Cadastro</a>
+      </div>
+    </div>
+  </nav>
     
   <%= yield %>
 </body>

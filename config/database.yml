@@ -1,7 +1,7 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: <%= ENV["POSTGRESQL_USER"] || ENV["USER"] || 'postgres' %>
+  username: <%= 'postgres' %>
   database: <%= ENV["POSTGRESQL_DATABASE"] || 'covid-19_development' %>
   password: <%= ENV["POSTGRESQL_PASSWORD"] %>
   host: <%= ENV["POSTGRESQL_HOST"] || 'localhost' %>

@@ -1,139 +1,307 @@
-<h2>Faça seu cadastro</h2>
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
-<section>
+
+<style>
+
+.largura-entre-campos {
+  margin-bottom: 30px;
+}
+
+.borda-caixa-texto {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #ff8d02;
+  }
+
+  .caixa-de-texto {
+    padding: 0 0 2px 5px;
+    width: 300px;
+    color: #191970;
+    background-color: transparent;
+    font-family: 'Roboto-Regular';
+    font-size: 16px;
+  }
+
+  .fundo-externo {
+    background-image: url(/assets/fundo-escuro-pequeno.jpeg);
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+  .container-cadastro {
+    background-color:#f8f9fa;
+    width: 600px;
+    height: 100%;
+    margin: 0 0 0 50px;
+    padding: 30px;
+  }
+
+  .titulo-h2 {
+    font-family: 'Oswald-Bold';
+    font-size: 40px;
+    color: #ff8d02;
+    margin-bottom: 40px;
+  }
+
+  .texto-label {
+    font-family: 'roboto';
+    color: #191970;
+    font-size: 16px;
+  }
+
+  legend {
+    font-family: 'Roboto-Bold';
+    color: #191970;
+  }
+
+  .texto-checkbox {
+    color: #ed4f61;
+    font-size: 15px;
+    font-family: 'roboto';
+  }
+
+  .sim-radio {
+    color: green;
+    font-size: 15px;
+    font-family: 'roboto';
+  }
+
+  .nao-radio {
+
+    color: #ed4f61;
+    font-size: 15px;
+    font-family: 'roboto';
+  }
+
+  .botao-finalizar {
+    background-color: #ff8d02;
+    background-image: url(/assets/favicon.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-size: 18px;
+    font-family: 'Oswald';
+    color: #191970;
+    outline: 0;
+  
+  }
+
+  .botao-finalizar:hover {
+    background-color: #ff9d25;
+  }
+
+  
+
+
+</style>
+
+
+<section class="fundo-externo">
+
   <main>
-    <div class="container">
+
+    <div style="width: 100%; height: 50px;">
+
+    </div>
+    
+    <div class="container-cadastro container-md">
+      <h1 class="titulo-h2" style="margin-top: 0;">Faça seu cadastro</h1>
       <legend class="">Dados Pessoais</legend>
 
-      <div class="">
-        <%= f.label :Nome, class: '' %>
-        <%= f.text_field :name, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
+    
+      <div class="largura-entre-campos row" style="margin-top: 50px;">
+        <div class="col-4" align="right">
+          <%= f.label :Nome, class: 'texto-label' %>
+        </div>
+        <div class="col">
+          <%= f.text_field :name, autofocus: true, :style => "text-transform: capitalize;", :class => "borda-caixa-texto caixa-de-texto", :maxlength=> "20", :autocomplete => "off", required: true %>
+        </div>
+      </div>
+      
+
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+          <%= f.label :Sobrenome, class: 'texto-label' %>
+        </div>
+        <div class="col" align="left">
+          <%= f.text_field :last_name, autofocus: true, :class => "borda-caixa-texto caixa-de-texto", :maxlength=> "50", :autocomplete => "off", required: true %>
+        </div>
       </div>
 
-      <div class="">
-        <%= f.label :Sobrenome, class: '' %>
-        <%= f.text_field :last_name, autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "Ex: Youser da Silva Moraes" , :maxlength=> "50", :autocomplete => "off", required: true %>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+          <%= f.label :Data_de_nascimento, class: 'texto-label' %>
+        </div>
+        <div class="col">
+        <%= f.date_field :data_nasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "borda-caixa-texto caixa-de-texto", :placeholder => "00/00/0000" , :autocomplete => "off", required: true %>
+        </div>
       </div>
 
-      <div class="">
-        <%= f.label :Data_de_nascimento, class: '' %>
-        <%= f.date_field :data_nasc, as: :date, value: f.object.try(:strftime,"%m/%d/%Y"), autofocus: true, :class => "caixa-de-texto-cad borda-caixa-texto", :placeholder => "00/00/0000" , :maxlength=> "50", :autocomplete => "off", required: true %>
+      <div class="largura-entre-campos row" data-placement="top" data-trigger="manual" data-toggle="popover" data-content="O  CEP não é válido" id="text-cep">
+        <div class="col-4" align="right">
+          <%= f.label :CEP, class: 'texto-label' %>
+        </div>
+        <div class="col">
+        <%= f.text_field :cep, autofocus: true, :class => "borda-caixa-texto caixa-de-texto", :placeholder => "00000-000", :autocomplete => "off", required: true %>
+        </div>
       </div>
 
-      <div class="" data-placement="top" data-trigger="manual" data-toggle="popover" data-content="O  CEP não é válido" id="text-cep">
-        <%= f.label :CEP, class: '' %>
-        <%= f.text_field :cep, autofocus: true, :class => "", :placeholder => "00000-000", :autocomplete => "off", required: true %>
-      </div>
-
-      <div class="">
-        <%= f.label :Estado, class: '' %>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+          <%= f.label :Estado, class: 'texto-label' %>
+        </div>
+        <div class="col">
         <%= select(:user, :estado, [['São Paulo', 'SP'], ['Rio de Janeiro', 'RJ'], ['Minas Gerais', 'RJ']]) %>
+        </div>
       </div>
       
-      <div class="">
-        <%= f.label :Cidade, class: '' %>
-        <%= f.text_field :cidade, autofocus: true , :class => "", :placeholder => "Cidade", :autocomplete => "off", required: true %>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+          <%= f.label :Cidade, class: 'texto-label' %>
+        </div>
+        <div class="col">
+          <%= f.text_field :cidade, autofocus: true , :class => "borda-caixa-texto caixa-de-texto", :autocomplete => "off", required: true %>
+
+        </div>
       </div>
 
-      <div class="">
-        <%= f.label :Bairro, class: '' %>
-        <%= f.text_field :bairro, autofocus: true, :class => "", :placeholder => "Estado", :autocomplete => "off", required: true %>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+          <%= f.label :Bairro, class: 'texto-label' %>
+        </div>
+        <div class="col">
+        <%= f.text_field :bairro, autofocus: true, :class => "borda-caixa-texto caixa-de-texto", :autocomplete => "off", required: true %>
+        </div>
       </div>
 
-      <div class="">
-        <%= f.label :Rua, class: '' %>
-        <%= f.text_field :rua, autofocus: true, :class => "", :placeholder => "Logradouro", :autocomplete => "off", required: true%>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+          <%= f.label :Rua, class: 'texto-label' %>
+        </div>
+        <div class="col">
+        <%= f.text_field :rua, autofocus: true, :class => "borda-caixa-texto caixa-de-texto", :placeholder => "Logradouro/Avenida/Alameda", :autocomplete => "off", required: true%>
+        </div>
       </div>
 
-      <div class="">
-        <%= f.label :Email, class: '' %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true %>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+        <%= f.label :Email, class: 'texto-label' %>
+        </div>
+        <div class="col">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, :class => "borda-caixa-texto caixa-de-texto" %>
+        </div>
       </div>
 
-      <div class="">
-        <%= f.label :senha ,:password %>
-        <%= f.password_field :password, autocomplete: "new-password", required: true %>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+        <%= f.label :password, "Senha", class: 'texto-label' %>
+        </div>
+        <div class="col">
+          <%= f.password_field :password, autocomplete: "new-password", required: true, :class => "borda-caixa-texto caixa-de-texto" %>
+        </div>
       </div>
 
-      <div class="">
-        <%= f.label 'Confirme sua senha',:password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true %>
+      <div class="largura-entre-campos row">
+        <div class="col-4" align="right">
+        <%= f.label :password_confirmation, "Confirme sua Senha", class: 'texto-label' %><br />
+        </div>
+        <div class="col">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", required: true, :class => "borda-caixa-texto caixa-de-texto" %>
+        </div>
       </div>
 
-      <div class="">
-      <%= f.label 'Marque as opções que você se encaixa'%><br>
+      <div class="largura-entre-campos">
+        <%= f.label 'Marque as opções que você se encaixa', class: 'texto-label', :style => "margin-left: 110px" %><br><br>
+          <div class="row">
+            <div class="col-4">
+              <div class="row" style="padding: 0 0 0 30px;">
+              <%= f.label :possui_doenca, class: 'texto-checkbox' , :value => 'nenhuma' do |label| %>
+              <%= f.check_box :possui_doenca%>
+                Nenhuma
+              <% end %>
+              </div>
+              <div class="row" style="padding: 0 0 0 30px;">
+                <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'idoso/a' do |label| %>
+                <%= f.check_box :possui_doenca %>
+                  Idoso/a
+                <% end %>
+              </div>
+              <div class="row" style="padding: 0 0 0 30px;">
+                <%= f.label :possui_doenca,class: 'texto-checkbox' , :value => 'asma' do |label| %>
+                <%= f.check_box :possui_doenca %>
+                  Asma
+                <% end %>
+              </div>
+              <div class="row" style="padding: 0 0 0 30px;">
+                <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'cancer' do |label| %>
+                <%= f.check_box :possui_doenca %>
+                  Câncer
+                <% end %>
+              </div>
+            </div>
+            <div class="col-4">
+            <%= f.label :possui_doenca,class: 'texto-checkbox' , :value => 'diabetico/a' do |label| %>
+            <%= f.check_box :possui_doenca %>
+              Diabetico/a
+            <% end %>
+            
+            <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'doencas cardiovasculares' do |label| %>
+            <%= f.check_box :possui_doenca %>
+              Doenças Cardiovasculares
+            <% end %>
 
-      <%= f.label :possui_doenca, :value => 'nenhuma' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Nenhuma
-      <% end %>
+            <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'hipertensao' do |label| %>
+            <%= f.check_box :possui_doenca %>
+              Hipertensão
+            <% end %>
 
-      <%= f.label :possui_doenca, :value => 'idoso/a' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Idoso/a
-      <% end %>
+            <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'fumante' do |label| %>
+            <%= f.check_box :possui_doenca %>
+              Fumante
+            <% end %>
+            </div>
+            <div class="col-4">
+            <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'gestante' do |label| %>
+            <%= f.check_box :possui_doenca %>
+              Gestante
+            <% end %>
 
-      <%= f.label :possui_doenca, :value => 'asma' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Asma
-      <% end %>
+            <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'obesidade grave' do |label| %>
+            <%= f.check_box :possui_doenca %>
+              Obesidade Grave
+            <% end %>
+            </div>
+        </div>
+      </div>
 
-      <%= f.label :possui_doenca, :value => 'cancer' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Câncer
-      <% end %>
+      <div class="largura-entre-campos" align="center">
+        <%= f.label 'Possui criança na sua residencia?', class:'texto-label'%><br><br>
 
-      <%= f.label :possui_doenca, :value => 'diabetico/a' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Diabetico/a
-      <% end %>
+        <%= f.radio_button :possui_crianca, 'Sim'%>
+        <%= f.label :possui_crianca, 'Sim', class: 'sim-radio', :style => "padding: 0 20px 0 0", :value => true %>
+        <%= f.radio_button :possui_crianca, 'Nao' %>
+        <%= f.label :possui_crianca, 'Não', class: 'nao-radio', :style => "padding: 0 20px 0 0", :value => false %>
+      </div>
+
+      <div class="largura-entre-campos" align="center">
+        <%= f.label 'Possui alguém do grupo de risco na sua residencia?', class:'texto-label'%><br><br>
+        <%= f.radio_button :possui_risco, 'Sim' %>
+        <%= f.label :possui_risco, 'Sim', class: 'sim-radio', :style => "padding: 0 20px 0 0", :value => true %>
+        <%= f.radio_button :possui_risco, 'Nao' %>
+        <%= f.label :possui_risco, 'Não', class: 'nao-radio', :style => "padding: 0 20px 0 0", :value => false %>
+      </div>
       
-      <%= f.label :possui_doenca, :value => 'doencas cardiovasculares' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Doenças Cardiovasculares
-      <% end %>
-
-      <%= f.label :possui_doenca, :value => 'hipertensao' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Hipertensão
-      <% end %>
-
-      <%= f.label :possui_doenca, :value => 'fumante' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Fumante
-      <% end %>
-
-      <%= f.label :possui_doenca, :value => 'gestante' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Gestante
-      <% end %>
-
-      <%= f.label :possui_doenca, :value => 'obesidade grave' do |label| %>
-      <%= f.check_box :possui_doenca %>
-        Obesidade Grave
-      <% end %>
+      <div align="center">
+        <%= f.submit "CONFIRMAR", class: 'botao-finalizar' %>
       </div>
+    </div>
+    <div style="width: 100%; height: 50px;">
 
-      <div class="">
-      <%= f.radio_button :possui_crianca, 'Sim' %>
-      <%= f.label :possui_crianca, 'Possuo Crianca', :value => true %>
-      <%= f.radio_button :possui_crianca, 'Nao' %>
-      <%= f.label :possui_crianca, 'Não Possuo criança', :value => false %>
-      </div>
-
-      <div class="">
-      <%= f.radio_button :possui_risco, 'Sim' %>
-      <%= f.label :possui_risco, 'Possuo risco', :value => true %>
-      <%= f.radio_button :possui_risco, 'Nao' %>
-      <%= f.label :possui_risco, 'Não Possuo risco', :value => false %>
-      </div>
-      
-      <div class="">
-        <%= f.submit "Finalizar" %>
-      </div>
     </div>
   </main>
 </section>
 <% end %>
-<%= render "devise/shared/links" %>

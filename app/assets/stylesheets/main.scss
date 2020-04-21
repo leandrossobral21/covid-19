@@ -1,0 +1,27 @@
+
+.largura-entre-campos {
+  margin-bottom: 30px;
+}
+
+.borda-caixa-texto {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #ff8d02;
+  }
+
+  .caixa-de-texto {
+    padding: 0 0 2px 5px;
+    text-transform: capitalize;
+    width: 300px;
+    color: #191970;
+    font-size: 16px;
+    font-family: Arial;
+  }
+
+  .fundo-externo {
+    background-image: url(/assets/fundo-escuro-pequeno.jpeg);
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
