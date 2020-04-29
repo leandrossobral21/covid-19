@@ -1,0 +1,103 @@
+.largura-entre-campos {
+  margin-bottom: 30px;
+}
+
+.borda-caixa-texto {
+  outline: 0;
+  border-width: 0 0 1px;
+  border-color: #ff8d02;
+  }
+
+  .caixa-de-texto {
+    padding: 0 0 2px 5px;
+    width: 300px;
+    color: #191970;
+    background-color: transparent;
+    font-family: 'Roboto-Regular';
+    font-size: 16px;
+  }
+
+  .fundo-externo {
+    background-image: url(/assets/fundo-escuro-pequeno.jpeg);
+    background-attachment: fixed;
+    background-position: center top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+  .container-cadastro {
+    background-color:#f8f9fa;
+    width: 600px;
+    height: 100%;
+    margin: 0 0 0 50px;
+    padding: 30px;
+  }
+
+  .titulo-h2 {
+    font-family: 'Oswald-Bold';
+    font-size: 40px;
+    color: #ff8d02;
+    margin-bottom: 40px;
+  }
+
+  .texto-label {
+    font-family: 'roboto';
+    color: #191970;
+    font-size: 16px;
+  }
+
+  legend {
+    font-family: 'Roboto-Bold';
+    color: #191970;
+  }
+
+  .texto-checkbox {
+    color: #ed4f61;
+    font-size: 15px;
+    font-family: 'roboto';
+  }
+
+  .sim-radio {
+    color: green;
+    font-size: 15px;
+    font-family: 'roboto';
+  }
+
+  .nao-radio {
+
+    color: #ed4f61;
+    font-size: 15px;
+    font-family: 'roboto';
+  }
+
+  .botao-finalizar {
+    background-color: #ff8d02;
+    background-image: url(/assets/favicon.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    width: 160px;
+    height: 40px;
+    font-size: 18px;
+    font-family: 'Oswald';
+    color: #191970;
+    outline: 0;
+
+  }
+
+  .botao-finalizar:hover {
+    background-color: #ff9d25;
+  }
+
+  .img-cadastro {
+    width: 700px;
+    height: 850px;
+    position: relative;
+  }
+
+  .link {
+    font-family: 'Roboto-regular';
+    color: #191970;
+    text-align: center;
+    text-decoration: underline;
+  }

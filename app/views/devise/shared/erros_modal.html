@@ -1,0 +1,20 @@
+<div class="modal fade bd-example-modal-sm" id="errors-modal" tabindex="-1" role="document" aria-labelledby="mySmallModalLabel"
+  aria-hidden="true" data-backdrop="static">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <img src="<%= image_url('icon-chat.png') %>" width="40" height="35" class="d-inline-block align-top displayed"
+              alt="logo os incriveis" style="margin-left: 10px;">
+
+              <h5 class="modal-title titulo-modal" id="exampleModalLabel" style="margin-right: 15px;" >  Opa, algo deu errado :(</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        </br>
+          <div class="modal-body">
+          <%= yield %>
+            </div>
+    </div>
+  </div>
+</div>

@@ -1,104 +1,6 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
 <%= render "devise/shared/error_messages", resource: resource %>
 
-<style>
-
-.largura-entre-campos {
-  margin-bottom: 30px;
-}
-
-.borda-caixa-texto {
-  outline: 0;
-  border-width: 0 0 1px;
-  border-color: #ff8d02;
-  }
-
-  .caixa-de-texto {
-    padding: 0 0 2px 5px;
-    width: 300px;
-    color: #191970;
-    background-color: transparent;
-    font-family: 'Roboto-Regular';
-    font-size: 16px;
-  }
-
-  .fundo-externo {
-    background-image: url(/assets/fundo-escuro-pequeno.jpeg);
-    background-attachment: fixed;
-    background-position: center top;
-    background-repeat: no-repeat;
-    background-size: cover;
-}
-
-  .container-cadastro {
-    background-color:#f8f9fa;
-    width: 600px;
-    height: 100%;
-    margin: 0 0 0 50px;
-    padding: 30px;
-  }
-
-  .titulo-h2 {
-    font-family: 'Oswald-Bold';
-    font-size: 40px;
-    color: #ff8d02;
-    margin-bottom: 40px;
-  }
-
-  .texto-label {
-    font-family: 'roboto';
-    color: #191970;
-    font-size: 16px;
-  }
-
-  legend {
-    font-family: 'Roboto-Bold';
-    color: #191970;
-  }
-
-  .texto-checkbox {
-    color: #ed4f61;
-    font-size: 15px;
-    font-family: 'roboto';
-  }
-
-  .sim-radio {
-    color: green;
-    font-size: 15px;
-    font-family: 'roboto';
-  }
-
-  .nao-radio {
-
-    color: #ed4f61;
-    font-size: 15px;
-    font-family: 'roboto';
-  }
-
-  .botao-finalizar {
-    background-color: #ff8d02;
-    background-image: url(/assets/favicon.png);
-    background-position: right;
-    background-repeat: no-repeat;
-    border-radius: 20px;
-    width: 160px;
-    height: 40px;
-    font-size: 18px;
-    font-family: 'Oswald';
-    color: #191970;
-    outline: 0;
-  
-  }
-
-  .botao-finalizar:hover {
-    background-color: #ff9d25;
-  }
-
-  
-
-
-</style>
-
 
 <section class="fundo-externo">
 
@@ -107,12 +9,14 @@
     <div style="width: 100%; height: 50px;">
 
     </div>
-    
+    <div align="right" style="height: 10px;">
+      <img src="<%= image_url('mascara.png') %>" class="img-cadastro" alt="rapaz-mascara">
+    </div>
+
     <div class="container-cadastro container-md">
       <h1 class="titulo-h2" style="margin-top: 0;">Faça seu cadastro</h1>
       <legend class="">Dados Pessoais</legend>
 
-    
       <div class="largura-entre-campos row" style="margin-top: 50px;">
         <div class="col-4" align="right">
           <%= f.label :Nome, class: 'texto-label' %>
@@ -121,7 +25,7 @@
           <%= f.text_field :name, autofocus: true, :style => "text-transform: capitalize;", :class => "borda-caixa-texto caixa-de-texto", :maxlength=> "20", :autocomplete => "off", required: true %>
         </div>
       </div>
-      
+
 
       <div class="largura-entre-campos row">
         <div class="col-4" align="right">
@@ -158,7 +62,7 @@
         <%= select(:user, :estado, [['São Paulo', 'SP'], ['Rio de Janeiro', 'RJ'], ['Minas Gerais', 'RJ']]) %>
         </div>
       </div>
-      
+
       <div class="largura-entre-campos row">
         <div class="col-4" align="right">
           <%= f.label :Cidade, class: 'texto-label' %>
@@ -248,7 +152,7 @@
             <%= f.check_box :possui_doenca %>
               Diabetico/a
             <% end %>
-            
+
             <%= f.label :possui_doenca, class: 'texto-checkbox' ,:value => 'doencas cardiovasculares' do |label| %>
             <%= f.check_box :possui_doenca %>
               Doenças Cardiovasculares
@@ -294,7 +198,7 @@
         <%= f.radio_button :possui_risco, 'Nao' %>
         <%= f.label :possui_risco, 'Não', class: 'nao-radio', :style => "padding: 0 20px 0 0", :value => false %>
       </div>
-      
+
       <div align="center">
         <%= f.submit "CONFIRMAR", class: 'botao-finalizar' %>
       </div>
