@@ -95,7 +95,9 @@
         <div class="col-4" align="right">
         <%= f.label :Email, class: 'texto-label' %>
         </div>
-        <div class="col">
+        <div class="col" data-placement="top" data-trigger= "manual"  data-toggle="popover" data-content="Este email já consta em nosso banco de dados, tente outro!" id ="exist-email">
+        </div>
+        <div class="col" data-placement="top" data-trigger= "manual"  data-toggle="popover" data-content="O email deve ter @" id ="text-email">
           <%= f.email_field :email, autofocus: true, autocomplete: "email", required: true, :class => "borda-caixa-texto caixa-de-texto" %>
         </div>
       </div>
@@ -106,6 +108,9 @@
         </div>
         <div class="col">
           <%= f.password_field :password, autocomplete: "new-password", required: true, :class => "borda-caixa-texto caixa-de-texto" %>
+          <small id="senhaHelp" class="form-text text-muted">A senha deve conter 8 Caracteres: Letra Maiúscula e
+          </br> Minúscula,
+          Caracter especial e Número</small>
         </div>
       </div>
 
@@ -119,7 +124,7 @@
       </div>
 
       <div class="largura-entre-campos">
-        <%= f.label 'Marque as opções que você se encaixa', class: 'texto-label', :style => "margin-left: 110px" %><br><br>
+        <%= f.label 'Marque as opções que você se encaixa', class: 'texto-label', :style => "margin-left: 130px" %><br><br>
           <div class="row">
             <div class="col-4">
               <div class="row" style="padding: 0 0 0 30px;">
@@ -200,11 +205,14 @@
       </div>
 
       <div align="center">
-        <%= f.submit "CONFIRMAR", class: 'botao-finalizar' %>
+        <%= f.submit "CONFIRMAR", class: 'botao-finalizar' %><br><br>
+      </div>
+
+      <div align="center">
+      <%= link_to "Voltar", new_session_path(resource_name), class: "link" %>
       </div>
     </div>
     <div style="width: 100%; height: 50px;">
-
     </div>
   </main>
 </section>
